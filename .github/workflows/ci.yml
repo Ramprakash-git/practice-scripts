@@ -1,0 +1,21 @@
+name: "CI pipeline"
+
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+  
+  steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Setup python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Run test
+      run: python3 functions.py
